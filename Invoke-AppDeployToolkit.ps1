@@ -160,7 +160,7 @@ function Install-ADTDeployment
     $adtSession.InstallPhase = "Post-$($adtSession.DeploymentType)"
 
     ## <Perform Post-Installation tasks here>
-
+    Copy-ADTFile -Path "$($adtSession.DirFiles)\Magic Systems of Systems Architect.lnk" -Destination "C:\ProgramData\Microsoft\Windows\Start Menu\Programs"
     ## Display a message at the end of the install.
     #if (!$adtSession.UseDefaultMsi)
     #{
