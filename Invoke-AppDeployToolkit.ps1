@@ -93,17 +93,17 @@ param
 
 $adtSession = @{
     # App variables.
-    AppVendor = ''
-    AppName = ''
-    AppVersion = ''
-    AppArch = ''
-    AppLang = ''
+    AppVendor = 'Catia Magic'
+    AppName = 'Magic Systems of Systems Architect'
+    AppVersion = '2026'
+    AppArch = 'x64'
+    AppLang = 'en-US'
     AppRevision = ''
     AppSuccessExitCodes = @(0)
     AppRebootExitCodes = @(1641, 3010)
     AppScriptVersion = '1.0.0'
-    AppScriptDate = 'YYYY-M-D'
-    AppScriptAuthor = ''
+    AppScriptDate = '04/06/2026'
+    AppScriptAuthor = 'Will Jarvill'
 
     # Install Titles (Only set here to override defaults set by the toolkit).
     InstallName = ''
@@ -152,7 +152,7 @@ function Install-ADTDeployment
     }
 
     ## <Perform Installation tasks here>
-
+    Start-ADTProcess -FilePath "No_Magic_2026x_HF2.Magic_Systems_of_Systems_Architect_2026x_HF2_win64.exe" -ArgumentList "-i silent -r `"$($adtSession.DirFiles)\installer.properties`""
 
     ##================================================
     ## MARK: Post-Install
@@ -201,7 +201,7 @@ function Uninstall-ADTDeployment
     }
 
     ## <Perform Uninstallation tasks here>
-
+    Start-ADTProcess -FilePath "C:\Program Files\Magic Systems of Systems Architect\UninstallerData\Uninstall Magic Systems of Systems Architect.exe" -ArgumentList "-i silent"
 
     ##================================================
     ## MARK: Post-Uninstallation
