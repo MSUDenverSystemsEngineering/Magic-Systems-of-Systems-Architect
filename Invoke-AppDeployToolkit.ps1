@@ -161,6 +161,10 @@ function Install-ADTDeployment
 
     ## <Perform Post-Installation tasks here>
     Copy-ADTFile -Path "$($adtSession.DirFiles)\Magic Systems of Systems Architect.lnk" -Destination "C:\ProgramData\Microsoft\Windows\Start Menu\Programs"
+
+    ## Open Firewall ports for the application.
+    Start-ADTProcess -FilePath "$envSystem32directory\netsh.exe" -ArgumentList "advfirewall firewall add rule name=`"Magic Systems of Systems Architect`" dir=in action=allow program=`"C:\Program Files\Magic Systems of Systems Architect\jre\bin\javaw.exe`" enable=yes profile=any protocol=tcp edge=deferuser"
+    Start-ADTProcess -FilePath "$envSystem32directory\netsh.exe" -ArgumentList "advfirewall firewall add rule name=`"Magic Systems of Systems Architect`" dir=in action=allow program=`"C:\Program Files\Magic Systems of Systems Architect\jre\bin\javaw.exe`" enable=yes profile=any protocol=udp edge=deferuser"
     ## Display a message at the end of the install.
     #if (!$adtSession.UseDefaultMsi)
     #{
